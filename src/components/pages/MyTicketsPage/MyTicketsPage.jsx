@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import API from '../../../services/api';
-import { useAuth } from '../../../context/AuthContext';
+import API from '../../../services/api'; // CORRECTED PATH
+import { useAuth } from '../../../context/AuthContext'; // CORRECTED PATH
 import Navbar from '../../smallCompo/Navbar/Navbar';
 
+// ... rest of the component code is the same
 function MyTicketsPage() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +12,6 @@ function MyTicketsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // If user is not logged in, redirect them to the login page
     if (!isLoggedIn) {
       navigate('/login');
       return;

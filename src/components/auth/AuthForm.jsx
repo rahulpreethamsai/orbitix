@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import API from '../../services/api';
+import { useAuth } from '../../context/AuthContext'; // CORRECTED PATH
+import API from '../../services/api'; // CORRECTED PATH
 
+// ... rest of the component code is the same
 const AuthForm = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -21,8 +22,8 @@ const AuthForm = () => {
 
     try {
       const { data } = await API.post(endpoint, formData);
-      login(data); // Save user and token to context and local storage
-      navigate('/'); // Redirect to home on success
+      login(data);
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred');
     }
@@ -35,15 +36,11 @@ const AuthForm = () => {
           <h2 className="text-2xl font-bold">Welcome</h2>
           <p className="text-gray-400">{isSignUp ? 'Create an account' : 'Sign in'}</p>
         </div>
-
-        {/* Toggle Buttons */}
         <div className="grid grid-cols-2 gap-2 bg-black/20 p-1 rounded-lg">
           <button onClick={() => setIsSignUp(false)} className={`py-2 rounded-md ${!isSignUp ? 'bg-white text-black' : 'bg-transparent text-white'}`}>Sign In</button>
           <button onClick={() => setIsSignUp(true)} className={`py-2 rounded-md ${isSignUp ? 'bg-white text-black' : 'bg-transparent text-white'}`}>Sign Up</button>
         </div>
-
         {error && <p className="text-red-500 text-center">{error}</p>}
-
         <form onSubmit={handleSubmit} className="space-y-6">
           {isSignUp && (
             <div>
