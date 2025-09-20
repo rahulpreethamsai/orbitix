@@ -5,7 +5,7 @@ import AuthForm from './components/auth/AuthForm';
 import AttractionsPage from './components/pages/AttractionsPage/AttractionsPage';
 import AttractionsDetails from './components/pages/AttractionsDetailsPage/AttractionsDetails';
 import MyTicketsPage from './components/pages/MyTicketsPage/MyTicketsPage'; // New Page
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './components/auth/AuthContext.jsx';
 
 function App() {
   return (
