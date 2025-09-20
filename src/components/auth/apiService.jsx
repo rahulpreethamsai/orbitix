@@ -1,13 +1,24 @@
 import axios from 'axios';
 
-// Create an Axios instance with a base URL for your backend
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+// The single source of truth for your backend URL.
+// Change the baseURL from your local address to your new live Render URL.
+const API = axios.create({ 
+  // PREVIOUSLY: baseURL: 'http://localhost:5000/api'
+  // UPDATED:
+  baseURL: 'https://event-booking-app-t7fw.onrender.com/api' 
+});
 
-// Use an interceptor to add the JWT to the authorization header for every request
+/**
+ * This interceptor automatically attaches the user's authentication token
+ * to the headers of every single request sent to your backend.
+ * * This is how your protected routes (like creating a booking or
+ * viewing 'My Tickets') will work. The backend receives the token,
+ * validates it with the authMiddleware, and confirms who the user is.
+ */
 API.interceptors.request.use((req) => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  if (user && user.token) {
-    req.headers.Authorization = `Bearer ${user.token}`;
+  const userToken = localStorage.getItem('token');
+  if (userToken) {
+    req.headers.Authorization = `Bearer ${userToken}`;
   }
   return req;
 });
