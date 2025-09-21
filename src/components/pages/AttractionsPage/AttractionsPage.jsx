@@ -17,21 +17,22 @@ function AttractionsPage() {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-    async function pageAttractions() {
-      setLoading(true);
-      try {
-        // Now using your backend API via the imported API service
-        const { data } = await API.get('/events/attractions');
-        setAttractions(data);
-      } catch (error) {
-        console.error(error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+  async function pageAttractions() {
+    setLoading(true);
+    try {
+      const { data } = await API.get('/events/attractions');
+      console.log('API response:', data);
+      setAttractions(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+      setAttractions([]); // <-- Ensure attractions is always an array on error
+    } finally {
+      setLoading(false);
     }
-    pageAttractions();
-  }, []);
+  }
+  pageAttractions();
+}, []);
   
   const filteredEvents = useMemo(() => {
     return FilterLogic(attractions, typeFilter, filterValue, date, activeCategory);
