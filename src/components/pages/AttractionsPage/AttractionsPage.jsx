@@ -17,7 +17,7 @@ function AttractionsPage() {
   async function pageAttractions() {
     setLoading(true);
     try {
-      const { data } = await API.get('/events/attractions');
+      const { data } = await API.get('/attractions');
       console.log('API response:', data);
       setAttractions(Array.isArray(data) ? data : []);
     } catch (error) {
