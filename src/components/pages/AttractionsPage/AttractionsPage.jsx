@@ -44,6 +44,8 @@ function AttractionsPage() {
             <p className={`text-lg ${activeCategory == "All" ? "text-yellow-400 underline" : "hover:underline hover:text-yellow-400" } p-1 cursor-pointer`} onClick={() => setActiveCategory("All")}>All</p>
             <p className={`text-lg ${activeCategory == "Music" ? "text-green-500 underline" : "hover:underline hover:text-green-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Music")}>Music</p>
             <p className={`text-lg ${activeCategory == "Sports" ? "text-orange-500 underline" : "hover:underline hover:text-orange-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Sports")}>Sports</p>
+            <p className={`text-lg ${activeCategory == "Tech" ? "text-blue-500 underline" : "hover:underline hover:text-blue-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Tech")}>Tech</p>
+            <p className={`text-lg ${activeCategory == "Podcast" ? "text-pink-500 underline" : "hover:underline hover:text-pink-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Podcast")}>Podcast</p>
         </div>
         <aside className='flex flex-row gap-5 p-6 justify-around'>
           <div className="flex flex-col justify-center items-center gap-4 p-10 h-60 bg-[#1F1F1F] rounded-xl shadow-2xl sticky top-30 z-100">
@@ -59,10 +61,8 @@ function AttractionsPage() {
               className="w-full bg-pink-400 text-white p-2 rounded-lg border border-black/60"
             >
               <option value="name">Name</option>
-              <option value="city">City</option>
-              <option value="classification">Classification</option>
-              <option value="genre">Genre</option>
-              <option value="subGenre">Sub Genre</option>
+              <option value="city">Venue</option>
+              <option value="classification">Category</option>
             </select>
             <input
               type="search"
@@ -80,7 +80,7 @@ function AttractionsPage() {
             ) : filteredEvents.length > 0 ? (
               filteredEvents.map((item) => (
                 <div
-                  key={item.id}
+                  key={item._id}
                   className="relative group shadow-2xl hover:scale-105 hover:shadow-purple-500/50 rounded-xl transition-transform duration-300 cursor-pointer overflow-hidden h-full"
                 >
                   <img
@@ -97,7 +97,7 @@ function AttractionsPage() {
                       {item.category || 'Unknown Type'}
                     </p>
                   </div>
-                  <Link to={`/attractions/${item.id}`}>
+                  <Link to={`/attractions/${item._id}`}>
                     <div className='absolute bottom-10 right-3 bg-white p-3 rounded-full opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 ease-in-out'>
                       <svg
                         xmlns='http://www.w3.org/2000/svg'

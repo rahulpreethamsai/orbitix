@@ -1,40 +1,32 @@
 
 export default function FilterLogic(attractions, typeFilter, filterValue, date, activeCategory) {
   return attractions.filter((event) => {
-    const nameMatch = event.name?.toLowerCase();
-    const dateMatch = date ? event.dates?.start?.localDate === date : true;
+    const nameFilter = event.name?.toLowerCase();
+    const dateFilter = date ? event.date === date : true;
 
-    const city = event._embedded?.venues?.[0]?.city?.name?.toLowerCase();
-    const classification = event.classifications?.[0]?.segment?.name?.toLowerCase();
-    const genre = event.classifications?.[0]?.genre?.name?.toLowerCase();
-    const subGenre = event.classifications?.[0]?.subGenre?.name?.toLowerCase();
+    const venueFilter = event.venue?.toLowerCase();
+    const categoryFilter = event.category?.toLowerCase();
     const value = filterValue.toLowerCase();
 
     let filterMatch = true;
     if (filterValue.trim() !== "") {
       switch (typeFilter) {
         case "name":
-          filterMatch = nameMatch?.includes(value);
+          filterMatch = nameFilter?.includes(value);
           break;
         case "city":
-          filterMatch = city?.includes(value);
+          filterMatch = venueFilter?.includes(value);
           break;
         case "classification":
-          filterMatch = classification?.includes(value);
-          break;
-        case "genre":
-          filterMatch = genre?.includes(value);
-          break;
-        case "subGenre":
-          filterMatch = subGenre?.includes(value);
+          filterMatch = categoryFilter?.includes(value);
           break;
         default:
           filterMatch = true;
       }
     }
 
-    const categoryMatch = activeCategory === "All" || classification===activeCategory.toLowerCase();
+    const categoryMatch = activeCategory === "All" || categoryFilter===activeCategory.toLowerCase();
 
-    return filterMatch && dateMatch && categoryMatch;
+    return filterMatch && dateFilter && categoryMatch;
   });
 }
