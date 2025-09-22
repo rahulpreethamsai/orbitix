@@ -15,7 +15,7 @@ function AttractionsDetails() {
   useEffect(() => {
     const getDetails = async () => {
       try {
-        const { data } = await API.get(`/events/${id}`);
+        const { data } = await API.get(`/attractions/${id}`);
         setDetails(data);
       } catch (err) {
         setError('Could not fetch event details.');
