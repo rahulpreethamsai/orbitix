@@ -45,7 +45,7 @@ function AttractionsPage() {
             <p className={`text-lg ${activeCategory == "Music" ? "text-green-500 underline" : "hover:underline hover:text-green-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Music")}>Music</p>
             <p className={`text-lg ${activeCategory == "Sports" ? "text-orange-500 underline" : "hover:underline hover:text-orange-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Sports")}>Sports</p>
             <p className={`text-lg ${activeCategory == "Tech" ? "text-blue-500 underline" : "hover:underline hover:text-blue-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Tech")}>Tech</p>
-            <p className={`text-lg ${activeCategory == "Podcast" ? "text-pink-500 underline" : "hover:underline hover:text-pink-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Podcast")}>Podcast</p>
+            <p className={`text-lg ${activeCategory == "Podcasts" ? "text-pink-500 underline" : "hover:underline hover:text-pink-500"} p-1 cursor-pointer`} onClick={() => setActiveCategory("Podcasts")}>Podcast</p>
         </div>
         <aside className='flex flex-row gap-5 p-6 justify-around'>
           <div className="flex flex-col justify-center items-center gap-4 p-10 h-60 bg-[#1F1F1F] rounded-xl shadow-2xl sticky top-30 z-100">
@@ -86,8 +86,15 @@ function AttractionsPage() {
                   <img
                     src={item.imageUrl}
                     alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:blur-sm ease-in-out group-hover:scale-105"
-                  />
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:blur-sm ease-in-out group-hover:scale-105" />
+                  <div className="absolute top-4 right-4 flex flex-col items-end">
+                    <span className="bg-black/80 text-white font-bold px-3 py-1 rounded-lg text-lg shadow-lg">
+                      {new Date(item.date).getDate()}
+                    </span>
+                    <span className="bg-black/60 text-gray-300 px-2 py-0.5 rounded-lg text-xs mt-1 shadow">
+                      {new Date(item.date).toLocaleString('default', { month: 'short' })}
+                    </span>
+                  </div>
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
