@@ -19,7 +19,7 @@ function Navbar() {
       </Link>
       <div className='flex flex-row justify-evenly gap-10 items-center'>
         <Link to='/' className='hover:text-green-400'>HOME</Link>
-        <Link to='/events' className='hover:text-red-400'>EVENTS</Link>
+        <Link to='/attractions' className='hover:text-red-400'>EVENTS</Link>
         {isLoggedIn && (
             <Link to='/mytickets' className='hover:text-blue-400'>MY TICKETS</Link>
         )}

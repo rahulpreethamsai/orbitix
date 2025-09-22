@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const EventTicketButton = () => {
 
   return (
-    <Link to='/events'>
+    <Link to='/attractions'>
     <button
       className="group relative flex h-16 w-64 cursor-pointer items-center justify-start overflow-hidden rounded-lg border border-neutral-800 bg-neutral-800 p-3 text-left text-base font-bold text-gray-50
                  duration-500 before:duration-500 after:duration-500
