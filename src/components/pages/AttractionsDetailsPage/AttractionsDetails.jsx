@@ -7,7 +7,7 @@ import Navbar from '../../smallCompo/Navbar/Navbar';
 function AttractionsDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user, isLoggedIn } = useAuth(); 
+  const { isLoggedIn } = useAuth(); 
   const [details, setDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -65,16 +65,6 @@ function AttractionsDetails() {
             <button onClick={handleBooking} className="bg-white text-black font-bold py-3 px-8 rounded-lg w-auto hover:bg-gray-300 transition">
               Book Ticket
             </button>
-
-            {/* --- NEW BUTTON LOGIC --- */}
-            {/* Show Edit button only if user is logged in AND their ID matches the event creator's ID */}
-            {user && user._id === details.user && (
-              <Link to={`/events/${id}/edit`}>
-                <button className="bg-gray-700 text-white font-bold py-3 px-8 rounded-lg w-auto hover:bg-gray-600 transition">
-                  Edit Event
-                </button>
-              </Link>
-            )}
           </div>
         </div>
       </div>

@@ -6,10 +6,10 @@ import AttractionsPage from './components/pages/AttractionsPage/AttractionsPage'
 import AttractionsDetails from './components/pages/AttractionsDetailsPage/AttractionsDetails';
 import MyTicketsPage from './components/pages/MyTicketsPage/MyTicketsPage';
 import AboutUs from './components/pages/AboutUsPage/AboutPage';
-import EditEventPage from './components/pages/EditEventPage/EditEventPage';
+
 
 function App() {
-  
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -17,7 +17,6 @@ function App() {
       <Route path="/events" element={<AttractionsPage />} />
       <Route path="/events/:id" element={<AttractionsDetails />} />
       <Route path="/mytickets" element={<MyTicketsPage />} />
-      <Route path="/events/:id/edit" element={<EditEventPage />} />
       <Route path="/about" element={<AboutUs />} />
     </Routes>
   );
