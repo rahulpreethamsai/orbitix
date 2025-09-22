@@ -74,7 +74,7 @@ function AttractionsPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {loading ? (
-              <p className="text-white">Is LOADING...</p>
+              <img src='https://media.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif' alt='Loadin-Image'/>
             ) : error ? (
               <p className="text-red-600">{error}</p>
             ) : filteredEvents.length > 0 ? (
@@ -84,7 +84,7 @@ function AttractionsPage() {
                   className="relative group shadow-2xl hover:scale-105 hover:shadow-purple-500/50 rounded-xl transition-transform duration-300 cursor-pointer overflow-hidden h-full"
                 >
                   <img
-                    src={item.images?.[0]?.url}
+                    src={item.imageUrl}
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:blur-sm ease-in-out group-hover:scale-105"
                   />
@@ -94,7 +94,7 @@ function AttractionsPage() {
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                     <h3 className="text-xl font-bold drop-shadow">{item.name}</h3>
                     <p className="text-sm text-gray-300 uppercase tracking-wider drop-shadow-sm">
-                      {item.classifications?.[0]?.segment?.name || 'Unknown Type'}
+                      {item.category || 'Unknown Type'}
                     </p>
                   </div>
                   <Link to={`/attractions/${item.id}`}>
@@ -121,10 +121,10 @@ function AttractionsPage() {
               <img
                 src='https://media4.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bnJpczExcjh2cm5pc3R1ZW5lencyeGN3a3c3N3lhNGNhaXU2cW1pNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OiC5BKaPVLl60/200.webp'
                 alt='monkey-logo'
-                className='mx-auto w-32 sm:w-40'
+                className='mx-auto w-full'
               />
             )}
-</div>
+         </div>
 
         </aside>
       </div>
