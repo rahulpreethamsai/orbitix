@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import API from '../../../services/api'; // CORRECTED PATH
-import { useAuth } from '../../../context/AuthContext'; // CORRECTED PATH
+import API from '../../../services/api';
+import { useAuth } from '../../../context/AuthContext';
 import Navbar from '../../smallCompo/Navbar/Navbar';
 
-// ... rest of the component code is the same
 function AttractionsDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,9 +16,16 @@ function AttractionsDetails() {
     const getDetails = async () => {
       try {
         const { data } = await API.get(`/events/${id}`);
-        setDetails(data);
+        console.log('Event details response:', data); // Debug log
+        if (data && typeof data === 'object') {
+          setDetails(data);
+        } else {
+          setError('Event not found.');
+          setDetails(null);
+        }
       } catch (err) {
         setError('Could not fetch event details.');
+        setDetails(null);
       } finally {
         setIsLoading(false);
       }
@@ -34,11 +40,11 @@ function AttractionsDetails() {
     }
     try {
       const bookingData = {
-        eventId: details._id,
-        eventName: details.name,
-        eventDate: details.date,
-        venue: details.venue,
-        imageUrl: details.imageUrl,
+        eventId: details?._id,
+        eventName: details?.name,
+        eventDate: details?.date,
+        venue: details?.venue,
+        imageUrl: details?.imageUrl,
       };
       await API.post('/bookings', bookingData);
       alert('Booking successful!');

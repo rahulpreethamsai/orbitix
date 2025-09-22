@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import API from '../../../services/api'; // CORRECTED PATH
-import { useAuth } from '../../../context/AuthContext'; // CORRECTED PATH
+import API from '../../../services/api';
+import { useAuth } from '../../../context/AuthContext';
 import Navbar from '../../smallCompo/Navbar/Navbar';
 
 // ... rest of the component code is the same

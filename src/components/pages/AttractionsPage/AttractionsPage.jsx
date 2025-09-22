@@ -2,9 +2,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import FilterLogic from '../../Hooks/FilterLogic';
 import Navbar from '../../smallCompo/Navbar/Navbar';
 import { Link } from 'react-router-dom';
-// --- THIS IS THE LINE TO CHANGE ---
-// FROM: import API from '../../../services/api'; 
-// TO:
 import API from '@/services/api';
 
 function AttractionsPage() {
@@ -26,7 +23,7 @@ function AttractionsPage() {
     } catch (error) {
       console.error(error);
       setError(error.message);
-      setAttractions([]); // <-- Ensure attractions is always an array on error
+      setAttractions([]);
     } finally {
       setLoading(false);
     }

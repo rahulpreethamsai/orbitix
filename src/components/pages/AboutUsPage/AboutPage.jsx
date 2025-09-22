@@ -2,7 +2,7 @@ import React from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
 export default function AboutUs() {
-  // Dummy data for ticket sales graph
+
   const ticketData = [
     { month: "Jan", tickets: 120 },
     { month: "Feb", tickets: 300 },
@@ -25,8 +25,6 @@ export default function AboutUs() {
           bring people together and create unforgettable experiences.
         </p>
       </header>
-
-      {/* Mission / Vision */}
       <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6 pb-16">
         <div className="p-6 rounded-2xl bg-[#1F1F1F] shadow-xl hover:shadow-purple-500/30 transition">
           <h2 className="text-2xl font-semibold mb-3 text-pink-400">
@@ -47,10 +45,7 @@ export default function AboutUs() {
           </p>
         </div>
       </section>
-
-      {/* Stats & Graph */}
       <section className="max-w-6xl mx-auto px-6 pb-16 grid md:grid-cols-2 gap-12">
-        {/* Stats */}
         <div className="flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-green-400 mb-4">Our Impact</h2>
           <ul className="space-y-3 text-gray-300 text-lg">
@@ -60,8 +55,6 @@ export default function AboutUs() {
             <li>⚡ <span className="text-white font-semibold">99.9% Uptime</span> Guaranteed</li>
           </ul>
         </div>
-
-        {/* Graph */}
         <div className="p-6 rounded-2xl shadow-lg">
           <h3 className="text-xl font-semibold mb-4 text-purple-400">
             Ticket Sales Growth

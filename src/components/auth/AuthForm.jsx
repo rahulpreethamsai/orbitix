@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext'; // CORRECTED PATH
-import API from '../../services/api'; // CORRECTED PATH
+import { useAuth } from '../../context/AuthContext';
+import API from '../../services/api';
 
-// ... rest of the component code is the same
 const AuthForm = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
