@@ -22,7 +22,7 @@ function AttractionsPage() {
       setAttractions(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error(error);
-      setError(error.message);
+      setError(error.message || "Failed to fetch events");
       setAttractions([]);
     } finally {
       setLoading(false);
