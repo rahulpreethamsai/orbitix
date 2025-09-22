@@ -20,8 +20,10 @@ function EditEventPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
+        // --- THIS IS THE CORRECTED LINE ---
+        // We fetch from the standard details endpoint, NOT the /edit endpoint.
         const { data } = await API.get(`/events/${id}`);
-        // Format the date correctly for the date input field (YYYY-MM-DD)
+        
         const formattedDate = new Date(data.date).toISOString().split('T')[0];
         setFormData({
           name: data.name,
@@ -42,14 +44,16 @@ function EditEventPage() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  
+
+  // 2. Handle the form submission to update the event
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
+      // The PUT request correctly goes to the update endpoint.
       await API.put(`/events/${id}`, formData);
       alert('Event updated successfully!');
-      navigate(`/events/${id}`); 
+      navigate(`/events/${id}`);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to update event.');
     }
