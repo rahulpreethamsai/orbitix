@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import FilterLogic from '../../Hooks/FilterLogic';
 import Navbar from '../../smallCompo/Navbar/Navbar';
 import { Link } from 'react-router-dom';
-import API from '@/services/api';
+import API from '../../../services/api';
 
 function AttractionsPage() {
   const [attractions, setAttractions] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import API from '../../../services/api';
 import { useAuth } from '../../../context/AuthContext';
 import Navbar from '../../smallCompo/Navbar/Navbar';
@@ -7,7 +7,7 @@ import Navbar from '../../smallCompo/Navbar/Navbar';
 function AttractionsDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { isLoggedIn } = useAuth();
+  const { user, isLoggedIn } = useAuth(); 
   const [details, setDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,16 +16,9 @@ function AttractionsDetails() {
     const getDetails = async () => {
       try {
         const { data } = await API.get(`/events/${id}`);
-        console.log('Event details response:', data); // Debug log
-        if (data && typeof data === 'object') {
-          setDetails(data);
-        } else {
-          setError('Event not found.');
-          setDetails(null);
-        }
+        setDetails(data);
       } catch (err) {
         setError('Could not fetch event details.');
-        setDetails(null);
       } finally {
         setIsLoading(false);
       }
@@ -34,17 +27,18 @@ function AttractionsDetails() {
   }, [id]);
 
   const handleBooking = async () => {
+    // ... (no changes in this function)
     if (!isLoggedIn) {
       navigate('/login');
       return;
     }
     try {
       const bookingData = {
-        eventId: details?._id,
-        eventName: details?.name,
-        eventDate: details?.date,
-        venue: details?.venue,
-        imageUrl: details?.imageUrl,
+        eventId: details._id,
+        eventName: details.name,
+        eventDate: details.date,
+        venue: details.venue,
+        imageUrl: details.imageUrl,
       };
       await API.post('/bookings', bookingData);
       alert('Booking successful!');
@@ -67,9 +61,21 @@ function AttractionsDetails() {
           <h1 className="text-4xl font-bold mb-2">{details.name}</h1>
           <p className="text-lg text-gray-400 mb-4">{new Date(details.date).toDateString()} at {details.venue}</p>
           <p className="text-gray-300 mb-6">{details.description}</p>
-          <button onClick={handleBooking} className="bg-white text-black font-bold py-3 px-8 rounded-lg w-full md:w-auto hover:bg-gray-300 transition">
-            Book Ticket
-          </button>
+          <div className="flex items-center gap-4">
+            <button onClick={handleBooking} className="bg-white text-black font-bold py-3 px-8 rounded-lg w-auto hover:bg-gray-300 transition">
+              Book Ticket
+            </button>
+
+            {/* --- NEW BUTTON LOGIC --- */}
+            {/* Show Edit button only if user is logged in AND their ID matches the event creator's ID */}
+            {user && user._id === details.user && (
+              <Link to={`/events/${id}/edit`}>
+                <button className="bg-gray-700 text-white font-bold py-3 px-8 rounded-lg w-auto hover:bg-gray-600 transition">
+                  Edit Event
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </main>
