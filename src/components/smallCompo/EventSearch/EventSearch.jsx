@@ -91,7 +91,7 @@ function EventSearch() {
               {filteredEvents.map((event) => {
                 const { day, month } = formatDate(event.date);
                 return (
-                  <Link to={`/attractions/${event._id}`} key={event._id}>
+                  <Link to={`/events/${event._id}`} key={event._id}>
                     <div className="snap-start flex-shrink-0 w-62 h-[300px] rounded-2xl relative overflow-hidden shadow-2xl group transition-all duration-300 ease-in-out hover:shadow-purple-500/50 cursor-pointer">
                         <img src={event.imageUrl} alt={event.name} className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"/>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
