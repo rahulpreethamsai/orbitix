@@ -44,7 +44,7 @@ export default function Footer() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-gray-900/70 rounded-xl shadow-md overflow-hidden"
+              className="bg-[#1F1F1F] rounded-xl shadow-md overflow-hidden"
             >
               <button
                 className="w-full flex justify-between items-center p-4 text-left text-lg font-medium hover:bg-gray-800 transition"
@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Links */}
-        <div className="mt-16 grid md:grid-cols-3 p-10 gap-10 text-gray-400 bg-[#1F1F1F]">
+        <div className="mt-16 grid md:grid-cols-3 p-10 gap-10 text-gray-400">
           <div>
             <h3 className="text-lg font-semibold text-white mb-3">Contact Us</h3>
             <p>Email: support@yourevents.com</p>
@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom line */}
-        <div className="mt-12 border-t border-white/30 pt-6 text-center text-sm text-[#1F1F1F">
+        <div className="mt-12 border-t border-white/30 pt-6 text-center text-sm text-[#1F1F1F]">
           © {new Date().getFullYear()} YourEvents. All rights reserved.
         </div>
       </div>

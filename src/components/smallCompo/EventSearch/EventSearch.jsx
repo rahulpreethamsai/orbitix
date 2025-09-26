@@ -63,10 +63,10 @@ function EventSearch() {
   return (
     <>
       <style>{`.scrollbar-hide::-webkit-scrollbar { display: none; } .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }`}</style>
-      <div className="p-8 relative min-h-screen text-white bg-black">
-        <h1 className="text-4xl tracking-[0.3em] font-bold text-center mb-6">TRENDING FOR YOU</h1>
+      <div className="p-6 flex flex-col gap-10 relative min-h-screen text-white bg-black">
+        <h1 className="text-4xl tracking-[0.3em] font-bold text-center mb-6 mt-10">TRENDING FOR YOU</h1>
         
-        <div className="flex flex-row justify-around items-center gap-5 mb-8 max-w-2xl mx-auto">
+        <div className="flex flex-row justify-around items-center gap-10 mb-8 w-2xl mx-auto">
           <input
             type="search"
             placeholder='Search For Event'

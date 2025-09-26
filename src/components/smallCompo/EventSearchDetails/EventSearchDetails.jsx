@@ -11,6 +11,7 @@ function EventSearchDetails() {
   const [details, setDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isBooking, setIsBooking] = useState(false);
 
   useEffect(() => {
     const getDetails = async () => {
@@ -32,6 +33,7 @@ function EventSearchDetails() {
       navigate('/login');
       return;
     }
+    setIsBooking(true);
     try {
       const bookingData = {
         eventId: details._id,
@@ -45,6 +47,8 @@ function EventSearchDetails() {
       navigate('/mytickets');
     } catch (err) {
       alert('Booking failed. Please try again.');
+    } finally{
+      setIsBooking(false);
     }
   };
 
@@ -62,8 +66,12 @@ function EventSearchDetails() {
           <p className="text-lg text-gray-400 mb-4">{new Date(details.date).toDateString()} at {details.venue}</p>
           <p className="text-gray-300 mb-6">{details.description}</p>
           <div className="flex items-center gap-4">
-            <button onClick={handleBooking} className="bg-white text-black font-bold py-3 px-8 rounded-lg w-auto hover:bg-gray-300 transition">
-              Book Ticket
+            <button
+                onClick={handleBooking}
+                disabled={isBooking} // Disable the button when booking
+                className="bg-white text-black font-bold py-3 px-8 rounded-lg w-auto hover:bg-gray-300 transition disabled:opacity-50"
+                >
+                {isBooking ? 'Booking...' : 'Book Ticket'}
             </button>
           </div>
         </div>

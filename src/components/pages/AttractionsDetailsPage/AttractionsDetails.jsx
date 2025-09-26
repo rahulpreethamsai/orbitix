@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import API from '../../../services/api';
 import { useAuth } from '../../../context/AuthContext';
 import Navbar from '../../smallCompo/Navbar/Navbar';
+import SeatSelection from '../../smallCompo/SeatSelection/SeatSelection';
 
 function AttractionsDetails() {
   const { id } = useParams();
@@ -67,6 +68,11 @@ function AttractionsDetails() {
             </button>
           </div>
         </div>
+      </div>
+      <div className="max-w-6xl mx-auto px-8 pb-8">
+        <h2 className="text-3xl font-bold mb-4 text-center">Book Your Seat</h2>
+        {/* Pass the event ID as a prop */}
+        <SeatSelection eventId={id} />
       </div>
     </main>
   );

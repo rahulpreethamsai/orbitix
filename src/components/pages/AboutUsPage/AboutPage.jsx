@@ -27,7 +27,7 @@ export default function AboutUs() {
       </header>
       <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6 pb-16">
         <div className="p-6 rounded-2xl bg-[#1F1F1F] shadow-xl hover:shadow-purple-500/30 transition">
-          <h2 className="text-2xl font-semibold mb-3 text-pink-400">
+          <h2 className="text-2xl font-semibold mb-3">
             Our Mission
           </h2>
           <p className="text-gray-300">
@@ -36,7 +36,7 @@ export default function AboutUs() {
           </p>
         </div>
         <div className="p-6 rounded-2xl bg-[#1F1F1F] shadow-xl hover:shadow-blue-500/30 transition">
-          <h2 className="text-2xl font-semibold mb-3 text-blue-400">
+          <h2 className="text-2xl font-semibold mb-3">
             Our Vision
           </h2>
           <p className="text-gray-300">
