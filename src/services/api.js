@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({ 
-  baseURL: 'https://event-booking-app-t7fw.onrender.com/api' 
+  baseURL: 'http://localhost:8000/api' 
 });
 
 
