@@ -4,7 +4,6 @@ import API from '../../../services/api';
 import { useAuth } from '../../../context/AuthContext';
 import Navbar from '../../smallCompo/Navbar/Navbar';
 
-// ... rest of the component code is the same
 function MyTicketsPage() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
